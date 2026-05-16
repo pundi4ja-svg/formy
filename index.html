@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+
+<style>
+/* =========================
+   ОБЩИЙ СТИЛЬ
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #1a001f, #000);
+  color: white;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+  background: linear-gradient(45deg, #ff6ec4, #ff0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================
+   СЕРДЦЕ ИЗ ФРАЗ
+========================= */
+
+.heart-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart {
+  position: relative;
+  width: 320px;
+  height: 300px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Форма сердца через clip-path */
+.heart-text {
+  width: 100%;
+  height: 100%;
+  clip-path: path("M160 290 C 20 170, 20 60, 90 60 C 140 60, 160 100, 160 100 C 160 100, 180 60, 230 60 C 300 60, 300 170, 160 290 Z");
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding: 20px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.heart-text span {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 2px;
+  background: linear-gradient(45deg, #ff9ecf, #ff0066, #b300ff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 6s ease infinite;
+}
+
+/* Пульсация */
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Градиент переливание */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   ФОТО-ГАЛЕРЕЯ
+========================= */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.photo {
+  overflow: hidden;
+  border-radius: 15px;
+  transform: rotate(-2deg);
+  transition: 0.4s;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.photo.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.photo img {
+  width: 100%;
+  display: block;
+  border-radius: 15px;
+  transition: 0.4s;
+}
+
+.photo:hover {
+  transform: scale(1.05) rotate(0deg);
+}
+
+/* Модальное окно */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.4s;
+  z-index: 1000;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 20px;
+}
+
+.modal.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* =========================
+   ВИДЕО-ГАЛЕРЕЯ
+========================= */
+
+.video-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.video-gallery video {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255,0,100,0.3);
+}
+
+@media (max-width: 600px) {
+  h2 { font-size: 1.7rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- =========================
+     СЕРДЦЕ
+========================= -->
+<div class="heart-container">
+  <div class="heart">
+    <div class="heart-text" id="heartText"></div>
+  </div>
+</div>
+
+<!-- =========================
+     ФОТО-ГАЛЕРЕЯ
+========================= -->
+<section>
+<h2>наша память 📸</h2>
+<div class="gallery">
+  <!-- Замени src на свои фото -->
+  <div class="photo"><img src="photo1.jpg" alt=""></div>
+  <div class="photo"><img src="photo2.jpg" alt=""></div>
+  <div class="photo"><img src="photo3.jpg" alt=""></div>
+  <div class="photo"><img src="photo4.jpg" alt=""></div>
+  <div class="photo"><img src="photo5.jpg" alt=""></div>
+  <div class="photo"><img src="photo6.jpg" alt=""></div>
+  <div class="photo"><img src="photo7.jpg" alt=""></div>
+  <div class="photo"><img src="photo8.jpg" alt=""></div>
+  <div class="photo"><img src="photo9.jpg" alt=""></div>
+  <div class="photo"><img src="photo10.jpg" alt=""></div>
+  <div class="photo"><img src="photo11.jpg" alt=""></div>
+  <div class="photo"><img src="photo12.jpg" alt=""></div>
+  <div class="photo"><img src="photo13.jpg" alt=""></div>
+</div>
+</section>
+
+<!-- =========================
+     ВИДЕО-ГАЛЕРЕЯ
+========================= -->
+<section>
+<h2>наши видео 🎥</h2>
+<div class="video-gallery">
+  <!-- Замени src на свои видео -->
+  <video controls src="video1.mp4"></video>
+  <video controls src="video2.mp4"></video>
+  <video controls src="video3.mp4"></video>
+  <video controls src="video4.mp4"></video>
+  <video controls src="video5.mp4"></video>
+  <video controls src="video6.mp4"></video>
+  <video controls src="video7.mp4"></video>
+  <video controls src="video8.mp4"></video>
+</div>
+</section>
+
+<!-- МОДАЛЬНОЕ ОКНО -->
+<div class="modal" id="modal">
+  <img id="modalImg">
+</div>
+
+<script>
+/* =========================
+   СОЗДАНИЕ СЕРДЦА ИЗ ТЕКСТА
+========================= */
+
+const heartText = document.getElementById("heartText");
+for (let i = 0; i < 200; i++) {
+  const span = document.createElement("span");
+  span.textContent = "i love u ";
+  heartText.appendChild(span);
+}
+
+/* =========================
+   Fade-in фото при скролле
+========================= */
+
+const photos = document.querySelectorAll(".photo");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+    }
+  });
+}, { threshold: 0.2 });
+
+photos.forEach(photo => observer.observe(photo));
+
+/* =========================
+   МОДАЛЬНОЕ ОКНО
+========================= */
+
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+
+photos.forEach(photo => {
+  photo.addEventListener("click", () => {
+    modal.classList.add("show");
+    modalImg.src = photo.querySelector("img").src;
+  });
+});
+
+modal.addEventListener("click", () => {
+  modal.classList.remove("show");
+});
+</script>
+<!-- =========================
+     КНОПКА К ПИСЬМУ
+========================= -->
+<section>
+  <a href="letter.html" class="letter-button">открой письмо пж 💌</a>
+</section>
+
+<style>
+.letter-button {
+  display: inline-block;
+  padding: 15px 40px;
+  border-radius: 50px;
+  background: linear-gradient(45deg, #ff6ec4, #ff0066);
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: 0.4s;
+  box-shadow: 0 0 20px rgba(255,0,100,0.4);
+}
+
+.letter-button:hover {
+  transform: scale(1.1);
+}
+</style>
+</body>
+</html>
